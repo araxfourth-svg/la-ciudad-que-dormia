@@ -1,25 +1,26 @@
-# La Ciudad que Dormía
+# La Ciudad que Dormía — versión 2
 
-Aventura narrativa interactiva de ciencia ficción ambientada en Nova Arcadia (2087). Proyecto educativo del coloquio final de Auxiliar en Inteligencia Artificial.
+## Instalación en GitHub Pages
+1. **Borrá el ZIP anterior** del repositorio (no es necesario para la web).
+2. Subí **todos los archivos y la carpeta `imagenes`** a la raíz del repositorio. `index.html` debe quedar visible en la lista principal.
+3. En Settings → Pages elegí Deploy from a branch → `principal` → `/(root)` → Save.
+4. Esperá la publicación y probá la web desde una ventana privada.
 
-## Publicar en GitHub Pages
+## Qué incluye
+- Logo local corregido, 22 ilustraciones SVG locales (una por escena), letras grandes y modo proyector.
+- Efectos sonoros simples activables, narración y diálogo Kai/VERA con voces del navegador (Web Speech API); dependen de las voces instaladas y del navegador. No son voces Gemini.
+- Chat VERA con respuestas guiadas que funciona **sin API**.
+- Integración **opcional** con Gemini para respuestas en vivo mediante Cloudflare Worker y clave secreta.
 
-1. Descargá y descomprimí el archivo ZIP del proyecto.
-2. En tu repositorio de GitHub, elegí **Add file → Upload files**.
-3. Arrastrá **el contenido de la carpeta** `la-ciudad-que-dormia` (no la carpeta contenedora). Deben quedar `index.html`, `style.css`, `script.js` y `historia.js` en la raíz, y las carpetas `imagenes` y `audios`.
-4. Hacé clic en **Commit changes**.
-5. Entrá a **Settings → Pages**. En **Build and deployment**, seleccioná **Deploy from a branch**, rama **main**, carpeta **/(root)** y guardá.
-6. Abrí `https://TU-USUARIO.github.io/NOMBRE-REPOSITORIO/` (reemplazá los valores). La publicación puede tardar unos minutos.
-7. Probá la historia en computadora y celular, incluyendo los caminos alternativos y el final.
+## Cómo activar Gemini (opcional, no necesario para la demostración)
+1. Crear una API key en https://aistudio.google.com/apikey y consultar límites gratuitos actuales.
+2. Crear un Cloudflare Worker con el contenido de `worker-gemini.js` (este archivo es de referencia; no se usa en GitHub Pages).
+3. En Settings → Variables and Secrets del Worker, guardar `GEMINI_API_KEY` como **Secret** y `ALLOWED_ORIGIN` como texto con la URL exacta de la página, sin barra final, p.ej. `https://araxfourth-svg.github.io`.
+4. Publicar el Worker. En `config.js`, escribir la URL HTTPS del Worker entre las comillas de `window.VERA_API_URL` y subir ese archivo a GitHub.
+5. Verificar que el chat indique «Gemini conectado» tras responder. Si falla, se conserva el modo demostración.
 
-## Archivos
-- `index.html`: página de inicio y estructura.
-- `style.css`: diseño adaptable a celular.
-- `historia.js`: historia original y decisiones.
-- `script.js`: funcionamiento del juego.
-- `imagenes/portada.webp`: imagen de portada.
-- `imagenes/icono.svg`: ícono de la pestaña.
-- `audios/`: carpeta preparada para agregar narraciones (todavía no están integradas).
+**Seguridad:** GitHub Pages es estático. Nunca escribir la API key en `config.js`, HTML, JS del navegador o el repositorio. Para un sitio público, agregar protección adicional al Worker (rate limiting / Turnstile) para evitar abuso de cuota. El control de origen por sí solo no impide solicitudes desde otros clientes.
 
-## Importante para el coloquio
-Esta versión es una **narrativa interactiva con guion y respuestas predefinidas**. VERA es un personaje ficticio con mensajes programados; **no utiliza un modelo de IA generativa en tiempo real**. No afirmar que la web incorpora IA conversacional real. La presentación 3D obligatoria es una entrega aparte y aún debe prepararse.
+**Voces:** el modo incluido usa síntesis de voz gratuita del dispositivo. Gemini TTS es un servicio diferente y no está conectado en esta versión. Si quieren voces Gemini, generen audios previamente y guárdenlos en `audios/`, o desarrollen un servicio de audio seguro; el nivel gratuito y límites pueden variar.
+
+**Presentación 3D:** este sitio contiene ilustraciones y efectos visuales, pero **no reemplaza** el recorrido o presentación tridimensional obligatoria del coloquio.

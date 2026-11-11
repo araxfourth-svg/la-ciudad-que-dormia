@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e20">
+  <meta name="description" content="La Ciudad que Dormía: una aventura narrativa interactiva en Nova Arcadia, año 2087.">
+  <title>La Ciudad que Dormía | Aventura interactiva</title>
+  <link rel="icon" href="imagenes/icono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="historia.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" id="brand"><span class="brand-icon">◈</span><span>LA CIUDAD QUE DORMÍA <small>AVENTURA INTERACTIVA · 2087</small></span></a>
+    <div class="top-actions"><span class="signal" id="signal">● SISTEMA EN ESPERA</span><button class="ghost" id="resetTop" type="button" hidden>↻ Reiniciar</button></div>
+  </header>
+  <main>
+    <section class="welcome" id="welcome">
+      <div class="welcome-art"><img src="imagenes/portada.webp" alt="Logo de La Ciudad que Dormía con Kai, VERA y la ciudad futurista Nova Arcadia"></div>
+      <div class="welcome-content"><span class="eyebrow">◈ PROTOCOLO NOVA ARCADIA</span><h1>La Ciudad que <em>Dormía</em></h1><p>2087. Una ciudad entera cae en un sueño inexplicable. Sos <strong>Kai</strong>, y con la ayuda de <strong>VERA</strong> deberás descubrir qué ocurre. Cada decisión cambia el camino.</p><button class="primary" id="start" type="button">▶ COMENZAR MISIÓN <span aria-hidden="true">→</span></button><p class="hint">Historia interactiva · Elegí tu propio camino · Podés volver atrás</p></div>
+    </section>
+    <section class="game" id="game" hidden aria-live="polite">
+      <div class="mission-head"><div><span class="eyebrow">◈ MISIÓN ACTIVA</span><h2 id="sceneTitle"></h2></div><span class="level" id="sceneLevel"></span></div>
+      <div class="progress-wrap"><div class="progress-label"><span>PROGRESO DE LA MISIÓN</span><span id="progressText">0 / 6</span></div><div class="progress"><div id="progressBar"></div></div></div>
+      <div class="columns"><article class="story-panel"><div class="panel-label">📡 TRANSMISIÓN NARRATIVA</div><div id="story" class="story"></div><div class="choice-head">▸ ¿QUÉ DECIDÍS HACER?</div><div id="choices" class="choices"></div></article><aside class="vera-panel"><div class="vera-orb" aria-hidden="true">V</div><span class="eyebrow">ASISTENTE INTEGRADA</span><h3>VERA <span class="online">● EN LÍNEA</span></h3><p id="veraText">Estoy lista para acompañarte, Kai. Analicemos nuestras opciones.</p><div class="vera-foot">SISTEMA DE APOYO · IA FICTICIA</div></aside></div>
+      <div class="nav"><button class="ghost" id="back" type="button">← Volver a la escena anterior</button><button class="ghost" id="restart" type="button">↻ Reiniciar aventura</button></div>
+      <details class="route"><summary>Ver recorrido realizado</summary><p id="routeText"></p></details>
+    </section>
+  </main>
+  <footer>LA CIUDAD QUE DORMÍA · PROYECTO EDUCATIVO · AUXILIAR EN INTELIGENCIA ARTIFICIAL · 2026</footer>
+</body>
+</html>
